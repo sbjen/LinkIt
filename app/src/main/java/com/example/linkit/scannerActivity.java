@@ -54,11 +54,15 @@ import java.util.Date;
 public class scannerActivity extends AppCompatActivity {
     private ImageView captured;
     private TextView resultText;
-    private Button snapBtn, detecBtn;
     private Bitmap imageBitmap;
+
+
+    private String NO_DETECTION_CODE = "-100";
 
     private PageDatabase pageDatabase;
     PageDAO pageDAO;
+    Page pageTemp = new Page();
+
 
     static final  int REQUEST_IMAGE_CAPTURE = 1;
 
@@ -69,8 +73,7 @@ public class scannerActivity extends AppCompatActivity {
 
         captured = findViewById(R.id.capturedImage);
         resultText = findViewById(R.id.resultText);
-        snapBtn = findViewById(R.id.clickSnap);
-        detecBtn = findViewById(R.id.detectText);
+
 
         // databse intilization
         pageDatabase = Room.databaseBuilder(
@@ -78,27 +81,16 @@ public class scannerActivity extends AppCompatActivity {
         pageDAO = pageDatabase.getPageDao();
 
 
-        detecBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DetectText();
-            }
-        });
 
 
-        // snap button click listner
-        snapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(CheckPermission())
-                {
-                    CaptureImage();
-                }
-                else {
-                    RequestPermissions();
-                }
-            }
-        });
+// snapping started
+        if(CheckPermission())
+        {
+            CaptureImage();
+        }
+        else {
+            RequestPermissions();
+        }
     }
 
 
@@ -110,7 +102,6 @@ public class scannerActivity extends AppCompatActivity {
         if(grantResults.length>0){
             boolean cameraPermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
             if(cameraPermission){
-                Toast.makeText(this,"permission granted capture image called",Toast.LENGTH_SHORT).show();
                 CaptureImage();
             }
             else
@@ -124,8 +115,8 @@ public class scannerActivity extends AppCompatActivity {
 
 
 
-    private String DetectText() {
-        String finalTextResult = "Has Nothing";
+    private void DetectText() {
+
 
         InputImage image = InputImage.fromBitmap(imageBitmap,0);
         TextRecognizer recognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS);
@@ -151,22 +142,31 @@ public class scannerActivity extends AppCompatActivity {
 
                         // display the resulys
                         resultText.setText(blockText);
+                        pageTemp.setCode(blockText);
+
+
 
 
 
 
                     }
+                    // on detection text call save and direction to webpage activity
+                    Log.i("HEAT","pageTemp in detectBox: "+ blockText);
+
                 }
+                SaveAndDirect(pageTemp.getCode());
+
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 Toast.makeText(getApplicationContext(),"failed to detect text" , Toast.LENGTH_SHORT).show();
+                pageTemp.setCode(NO_DETECTION_CODE);
             }
         });
 
-        finalTextResult = (String) resultText.getText();
-        return finalTextResult;
+
 
     }
     private boolean CheckPermission() {
@@ -209,24 +209,25 @@ public class scannerActivity extends AppCompatActivity {
                         Bundle extras  = data.getExtras();
                         imageBitmap = (Bitmap) extras.get("data");
                         captured.setImageBitmap((imageBitmap));
-                        String textResult = DetectText();
-                        textResult = "TEST";
-                        SaveAndDirect(textResult);
-                        
-                        // on detection text call save and direction to webpage activity 
-
+                        DetectText();
                     }
                 }
             });
 
     private void SaveAndDirect(String pageCode) {
+        if(pageCode == NO_DETECTION_CODE)
+        {
+            Toast.makeText(scannerActivity.this,"Error: "+ pageCode+" no pageCode detected",Toast.LENGTH_SHORT).show();
+            return;
+        }
 
         Page page = pageDAO.getPageFromPageCode(pageCode);
+        pageTemp.setCode(NO_DETECTION_CODE);
 
 
 
 
-        if(page == null)
+        if(page == null &&  pageCode != null)
         {
 
             LayoutInflater layoutInflater = LayoutInflater.from(getApplicationContext());
@@ -247,12 +248,16 @@ public class scannerActivity extends AppCompatActivity {
 
                     Page page = new Page(pageCode,EDIT_URL.getText().toString());
                     pageDAO.addPage(page);
-                    alertDialog.dismiss();
+                    alertDialog.cancel();
                 }
             });
 
-        }
-        else
+        } else if (page == null && pageCode == null ) {
+            Toast.makeText(scannerActivity.this,"No Text Detected",Toast.LENGTH_SHORT).show();
+
+            return;
+
+        } else
         {
             Toast.makeText(scannerActivity.this,"redirecting to: "+ page.getUrl(),Toast.LENGTH_SHORT).show();
             String url = page.getUrl();

@@ -62,7 +62,7 @@ public class Page {
 
     public void setCode(String code) {
         String temp = code.toUpperCase();
-        temp = temp.replaceAll("//s","");
+        temp = temp.replaceAll(" ","");
         this.code = temp;
     }
 
