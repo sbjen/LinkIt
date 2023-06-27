@@ -58,4 +58,9 @@ dependencies {
 
     // ink recognition
     implementation 'com.google.mlkit:digital-ink-recognition:18.1.0'
+
+    // room library
+    def room_version = "2.5.2"
+    implementation "androidx.room:room-runtime:$room_version"
+    annotationProcessor "androidx.room:room-compiler:$room_version"
 }
