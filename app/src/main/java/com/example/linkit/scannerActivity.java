@@ -55,6 +55,7 @@ public class scannerActivity extends AppCompatActivity {
     private ImageView captured;
     private TextView resultText;
     private Bitmap imageBitmap;
+    private Button BTN_CAPTURE;
 
 
     private String NO_DETECTION_CODE = "-100";
@@ -74,6 +75,8 @@ public class scannerActivity extends AppCompatActivity {
         captured = findViewById(R.id.capturedImage);
         resultText = findViewById(R.id.resultText);
 
+        BTN_CAPTURE = findViewById(R.id.BTN_CAPTURE);
+
 
         // databse intilization
         pageDatabase = Room.databaseBuilder(
@@ -83,7 +86,21 @@ public class scannerActivity extends AppCompatActivity {
 
 
 
-// snapping started
+        BTN_CAPTURE.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // snapping started
+                if(CheckPermission())
+                {
+                    CaptureImage();
+                }
+                else {
+                    RequestPermissions();
+                }
+
+
+            }
+        });
         if(CheckPermission())
         {
             CaptureImage();
@@ -91,6 +108,7 @@ public class scannerActivity extends AppCompatActivity {
         else {
             RequestPermissions();
         }
+
     }
 
 
@@ -249,6 +267,7 @@ public class scannerActivity extends AppCompatActivity {
                     Page page = new Page(pageCode,EDIT_URL.getText().toString());
                     pageDAO.addPage(page);
                     alertDialog.cancel();
+
                 }
             });
 

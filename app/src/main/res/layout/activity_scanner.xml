@@ -9,23 +9,36 @@
     <ImageView
         android:id="@+id/capturedImage"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="126dp"
         android:paddingHorizontal="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/BTN_CAPTURE"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/resultText"
         android:layout_width="match_parent"
-        android:textSize="20dp"
-        android:paddingHorizontal="20dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
+        android:paddingHorizontal="20dp"
         android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:text="text will be displayed here"
+        android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capturedImage"
-        android:text="text will be displayed here"/>
+        app:layout_constraintTop_toBottomOf="@+id/capturedImage" />
+
+    <Button
+        android:id="@+id/BTN_CAPTURE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="57dp"
+        android:text="Capture New Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capturedImage" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
