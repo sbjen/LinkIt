@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "719679845243",
+    "firebase_url": "https://linkit-de7a0-default-rtdb.firebaseio.com",
+    "project_id": "linkit-de7a0",
+    "storage_bucket": "linkit-de7a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719679845243:android:f79b39e50b6c0182bc43de",
+        "android_client_info": {
+          "package_name": "com.example.linkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "719679845243-dut19j634vdocmpvknnmuor4vvqhi9kb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.linkit",
+            "certificate_hash": "5f7a1e6465ddcd53f81cd66bc989b40fd110d239"
+          }
+        },
+        {
+          "client_id": "719679845243-7vdhb70kmc2jmovm11gakv60avqq33ma.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK0DP9Ex-JPrGO9TERYhgIfYvaBvIsFx0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "719679845243-0b6i95a6te642o9h0o85evlh5cjkfkfp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
