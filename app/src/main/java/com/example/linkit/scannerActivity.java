@@ -82,6 +82,8 @@ public class scannerActivity extends AppCompatActivity {
     }
 
 
+
+    // calling CaptureImage on permission grant
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -101,20 +103,6 @@ public class scannerActivity extends AppCompatActivity {
 
 
 
-
-
-
-//    @Override
-//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK)
-//        {
-//            // binding data on view elements
-//            Bundle extras  = data.getExtras();
-//            imageBitmap = (Bitmap) extras.get("data");
-//            captured.setImageBitmap((imageBitmap));
-//        }
-//    }
 
     private void DetectText() {
 
@@ -152,12 +140,10 @@ public class scannerActivity extends AppCompatActivity {
         });
 
     }
-
     private boolean CheckPermission() {
         int cameraPermission = ContextCompat.checkSelfPermission(getApplicationContext(),CAMERA_SERVICE);
         return cameraPermission == PackageManager.PERMISSION_GRANTED;
     }
-
     // request permission for
     private void RequestPermissions() {
         int PERMISSION_CODE = 200;
@@ -165,16 +151,11 @@ public class scannerActivity extends AppCompatActivity {
                 Manifest.permission.CAMERA
         } , PERMISSION_CODE );
         }
-
     private void CaptureImage() {
-//        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//        if(takePicture.resolveActivity(getPackageManager()) != null )
-//        {
-//            startActivityForResult(takePicture,REQUEST_IMAGE_CAPTURE);
-//        }
         openSomeActivityForResult();
-
     }
+
+
 
 
 
@@ -198,12 +179,19 @@ public class scannerActivity extends AppCompatActivity {
                         // binding data on view elements
                         Bundle extras  = data.getExtras();
                         imageBitmap = (Bitmap) extras.get("data");
-                        captured.setImageBitmap((imageBitmap));s
+                        captured.setImageBitmap((imageBitmap));
+                        DetectText();
+                        
+                        SaveAndDirect();
+                        
+                        // on detection text call save and direction to webpage activity 
 
                     }
                 }
             });
 
+    private void SaveAndDirect() {
+    }
 
 
 }
