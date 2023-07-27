@@ -5,7 +5,7 @@ The Note-to-Web Linking App is an innovative and user-friendly Android applicati
 Java Notes Scanner is an Android application developed in Android Studio that allows users to link notes to webpages and quickly open the associated webpage by scanning the note. The app is built using the MVVM (Model-View-ViewModel) architecture and integrates Google ML Kit for text recognition to scan the notes effectively.
 
 ## Features
-- Scan Notes: The app utilizes Google ML Kit to recognize text from images captured through the device's camera or uploaded from the gallery.
+- Scan Notes: The app utilizes Google ML Kit to recognize text from images captured through the device's camera.
 - Link Notes to Webpages: Users can associate the scanned notes with URLs to quickly access relevant web content.
 - Store Linked Notes: The app stores the linked notes and associated URLs in a local database.
 - Open Webpage with Scanning: By scanning the notes, the app will detect the associated URL and open the respective webpage.
@@ -19,12 +19,12 @@ Java Notes Scanner is an Android application developed in Android Studio that al
 ## Installation
 1. Clone the repository or download the project as a ZIP file.
 2. Open Android Studio and import the project.
-3. Sync the project with Gradle to resolve dependencies.
-4. Connect an Android device or use an emulator to run the app.
+3. Add all required dependencies 
+4. Sync the project with Gradle to resolve dependencies.
+5. Connect an Android device or use an emulator to run the app.
 
 ## Dependencies
 - Google ML Kit: Integration with ML Kit for text recognition functionality.
-- AndroidX: Android support library for improved backward compatibility.
 - Room Database: Local database for storing linked notes and URLs.
 - ViewModel and LiveData: Components from Android Architecture Components for implementing the MVVM pattern.
 
