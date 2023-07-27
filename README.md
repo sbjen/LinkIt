@@ -1,8 +1,6 @@
 # LinkIt
 The Note-to-Web Linking App is an innovative and user-friendly Android application developed in Android Studio that allows users to seamlessly link handwritten or typed notes to specific webpages. The app utilizes the device's camera and sophisticated image processing algorithms to recognize and scan handwritten or printed URLs from the notes
 
-# Project Name: Java Notes Scanner
-
 ## Description
 Java Notes Scanner is an Android application developed in Android Studio that allows users to link notes to webpages and quickly open the associated webpage by scanning the note. The app is built using the MVVM (Model-View-ViewModel) architecture and integrates Google ML Kit for text recognition to scan the notes effectively.
 
