@@ -46,14 +46,10 @@ The project follows the Model-View-ViewModel (MVVM) architectural pattern. Here'
 - **View**: Represents the UI components of the application, including Activities and Fragments. The View is passive and observes the ViewModel for any changes in data.
 - **ViewModel**: Acts as an intermediary between the Model and the View. It holds the UI-related data using LiveData, communicates with the Model, and provides data updates to the View.
 
-## Contributions
-Contributions to the project are welcome! If you find any bugs or want to suggest enhancements, please open an issue or submit a pull request.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
 
 ## Acknowledgments
-We would like to thank the developers and contributors of Google ML Kit and Android Architecture Components, as well as the Android community for their valuable resources and support.
+I would like to thank the developers and contributors on Stacke OverFlow Community valuable support.
 
----
-Please note that this is a basic README template, and you may want to customize it further to include detailed information about the app's functionalities, usage instructions, known issues, and future improvements. Additionally, you can add screenshots or GIFs to provide a visual representation.
+## License
+sb7 License
