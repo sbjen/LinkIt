@@ -47,7 +47,7 @@ The project follows the Model-View-ViewModel (MVVM) architectural pattern. Here'
 
 
 ## Acknowledgments
-I would like to thank the developers and contributors on Stacke OverFlow Community valuable support.
+I would like to thank the friendy developers and contributors on Stacke OverFlow Community valuable support.
 
 ## License
 sb7 License
