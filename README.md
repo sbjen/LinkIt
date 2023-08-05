@@ -36,7 +36,7 @@ Java Notes Scanner is an Android application developed in Android Studio that al
 5. To open the webpage associated with a specific note, scan the note again.
 
 ## How it Works
-The app utilizes Google ML Kit's text recognition API to extract text from images. When the user captures or selects an image from the gallery, the app sends the image to ML Kit, which returns the recognized text. The app then checks the extracted text for valid URLs using regular expressions or other methods. If a valid URL is found, it associates it with the scanned note and saves the data in the local Room database. When the user scans a note, the app retrieves the associated URL from the database and opens the webpage in the device's default web browser.
+The app utilizes Google ML Kit's text recognition API to extract text from images. When the user captures or selects an image from the gallery, the app sends the image to ML Kit, which returns the recognized text. The app then checks the extracted text for valid URLs using regular expressions or other methods. If a valid URL is found, it associates it with the scanned note and saves the data in the local Room database. When the user scans a note, the app retrieves the associated URL from the database and opens the webpages in the device's default web browser.
 
 ## Architecture - MVVM
 The project follows the Model-View-ViewModel (MVVM) architectural pattern. Here's a brief explanation of each component:
