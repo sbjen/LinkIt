@@ -14,7 +14,8 @@
         android:paddingHorizontal="20dp"
         app:layout_constraintBottom_toTopOf="@+id/BTN_CAPTURE"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
         android:id="@+id/resultText"
